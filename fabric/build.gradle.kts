@@ -31,7 +31,7 @@ dependencies {
     modRuntimeOnly("me.djtheredstoner:DevAuth-fabric:${project.properties["devauth_version"]}")
 
     // Generations-Core Fabric
-    modImplementation("generations.gg.generations.core:Generations-Core-Fabric:${project.properties["generations-core_version"]}")
+//    modImplementation("generations.gg.generations.core:Generations-Core-Fabric:${project.properties["generations-core_version"]}")
     modRuntimeOnly("dev.architectury:architectury-fabric:${project.properties["architectury_version"]}")
     modRuntimeOnly("earth.terrarium.botarium:botarium-fabric-${minecraftVersion}:${project.properties["botarium_version"]}")
 

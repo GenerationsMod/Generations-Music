@@ -4,31 +4,24 @@ issueTrackerURL = "https://github.com/GenerationsMod"
 license = "Insert License Here"
 
 [[mods]]
-modId = "modulename"
+modId = "generations_music"
 version = "${version}"
-displayName = "Generations ModuleName"
+displayName = "Generations Music"
 authors = "The Generations Team"
 description = '''
 '''
 #logoFile = ""
 
-[[dependencies.generations_modulename]]
+[[dependencies.generations_music]]
 modId = "forge"
 mandatory = true
 versionRange = "[47.2,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.generations_modulename]]
+[[dependencies.generations_music]]
 modId = "minecraft"
 mandatory = true
 versionRange = "[1.20.1]"
 ordering = "NONE"
-side = "BOTH"
-
-[[dependencies.generations_modulename]]
-modId = "generations_core"
-mandatory = true
-versionRange = "[)"
-ordering = "BEFORE"
 side = "BOTH"

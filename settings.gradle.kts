@@ -16,4 +16,4 @@ gradleEnterprise.buildScan {
 
 include("common", "fabric", "forge")
 
-rootProject.name = "Generations-Modulename"
+rootProject.name = "Generations-Music"

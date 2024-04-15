@@ -1,0 +1,297 @@
+{
+  "generations_music.music.ambient.azalea_town": {
+    "sounds": [
+      {
+        "name": "generations_music:music/ambient/azalea_town"
+      }
+    ]
+  },
+  "generations_music.music.ambient.cascarrafa_city": {
+    "sounds": [
+      {
+        "name": "generations_music:music/ambient/cascarrafa_city",
+        "attenuation_distance": 7,
+        "volume": 0.9
+      }
+    ]
+  },
+  "generations_music.music.ambient.cerulean_city": {
+    "sounds": [
+      {
+        "name": "generations_music:music/ambient/cerulean_city",
+        "attenuation_distance": 7,
+        "volume": 0.9
+      }
+    ]
+  },
+  "generations_music.music.ambient.eterna_city": {
+    "sounds": [
+      {
+        "name": "generations_music:music/ambient/eterna_city",
+        "attenuation_distance": 7,
+        "volume": 0.9
+      }
+    ]
+  },
+  "generations_music.music.ambient.goldenrod_city": {
+    "sounds": [
+      {
+        "name": "generations_music:music/ambient/goldenrod_city",
+        "attenuation_distance": 7,
+        "volume": 0.9
+      }
+    ]
+  },
+  "generations_music.music.ambient.icirrus_city": {
+    "sounds": [
+      {
+        "name": "generations_music:music/ambient/icirrus_city",
+        "attenuation_distance": 7,
+        "volume": 0.9
+      }
+    ]
+  },
+  "generations_music.music.ambient.jubilife_village": {
+    "sounds": [
+      {
+        "name": "generations_music:music/ambient/jubilife_village",
+        "attenuation_distance": 7,
+        "volume": 0.9
+      }
+    ]
+  },
+  "generations_music.music.ambient.lake_of_rage": {
+    "sounds": [
+      {
+        "name": "generations_music:music/ambient/lake_of_rage",
+        "attenuation_distance": 7,
+        "volume": 0.9
+      }
+    ]
+  },
+  "generations_music.music.ambient.laverre_city": {
+    "sounds": [
+      {
+        "name": "generations_music:music/ambient/laverre_city",
+        "attenuation_distance": 7,
+        "volume": 0.9
+      }
+    ]
+  },
+  "generations_music.music.ambient.lillie": {
+    "sounds": [
+      {
+        "name": "generations_music:music/ambient/lillie",
+        "attenuation_distance": 7,
+        "volume": 0.9
+      }
+    ]
+  },
+  "generations_music.music.ambient.pokemon_center": {
+    "sounds": [
+      {
+        "name": "generations_music:music/ambient/pokemon_center",
+        "attenuation_distance": 7,
+        "volume": 0.9
+      }
+    ]
+  },
+  "generations_music.music.ambient.route_228": {
+    "sounds": [
+      {
+        "name": "generations_music:music/ambient/route_228",
+        "attenuation_distance": 7,
+        "volume": 0.9
+      }
+    ]
+  },
+  "generations_music.music.ambient.slumbering_weald": {
+    "sounds": [
+      {
+        "name": "generations_music:music/ambient/slumbering_weald",
+        "attenuation_distance": 7,
+        "volume": 0.9
+      }
+    ]
+  },
+  "generations_music.music.ambient.surf": {
+    "sounds": [
+      {
+        "name": "generations_music:music/ambient/surf",
+        "attenuation_distance": 7,
+        "volume": 0.9
+      }
+    ]
+  },
+  "generations_music.music.ambient.vermilion_city": {
+    "sounds": [
+      {
+        "name": "generations_music:music/ambient/vermilion_city",
+        "attenuation_distance": 7,
+        "volume": 0.9
+      }
+    ]
+  },
+  "generations_music.music.battle.cynthia": {
+    "sounds": [
+      {
+        "name": "generations_music:music/battle/cynthia",
+        "attenuation_distance": 7,
+        "volume": 0.9
+      }
+    ]
+  },
+  "generations_music.music.battle.deoxys": {
+    "sounds": [
+      {
+        "name": "generations_music:music/battle/deoxys",
+        "attenuation_distance": 7,
+        "volume": 0.9
+      }
+    ]
+  },
+  "generations_music.music.battle.iris": {
+    "sounds": [
+      {
+        "name": "generations_music:music/battle/iris",
+        "attenuation_distance": 7,
+        "volume": 0.9
+      }
+    ]
+  },
+  "generations_music.music.battle.kanto": {
+    "sounds": [
+      {
+        "name": "generations_music:music/battle/kanto",
+        "attenuation_distance": 7,
+        "volume": 0.9
+      }
+    ]
+  },
+  "generations_music.music.battle.lusamine": {
+    "sounds": [
+      {
+        "name": "generations_music:music/battle/lusamine",
+        "attenuation_distance": 7,
+        "volume": 0.9
+      }
+    ]
+  },
+  "generations_music.music.battle.nemona": {
+    "sounds": [
+      {
+        "name": "generations_music:music/battle/nemona",
+        "attenuation_distance": 7,
+        "volume": 0.9
+      }
+    ]
+  },
+  "generations_music.music.battle.nessa": {
+    "sounds": [
+      {
+        "name": "generations_music:music/battle/nessa",
+        "attenuation_distance": 7,
+        "volume": 0.9
+      }
+    ]
+  },
+  "generations_music.music.battle.penny": {
+    "sounds": [
+      {
+        "name": "generations_music:music/battle/penny",
+        "attenuation_distance": 7,
+        "volume": 0.9
+      }
+    ]
+  },
+  "generations_music.music.battle.rival": {
+    "sounds": [
+      {
+        "name": "generations_music:music/battle/rival",
+        "attenuation_distance": 7,
+        "volume": 0.9
+      }
+    ]
+  },
+  "generations_music.music.battle.sada_and_turo": {
+    "sounds": [
+      {
+        "name": "generations_music:music/battle/sada_and_turo",
+        "attenuation_distance": 7,
+        "volume": 0.9
+      }
+    ]
+  },
+  "generations_music.music.battle.south_province": {
+    "sounds": [
+      {
+        "name": "generations_music:music/battle/south_province",
+        "attenuation_distance": 7,
+        "volume": 0.9
+      }
+    ]
+  },
+  "generations_music.music.battle.team_rocket": {
+    "sounds": [
+      {
+        "name": "generations_music:music/battle/team_rocket",
+        "attenuation_distance": 7,
+        "volume": 0.9
+      }
+    ]
+  },
+  "generations_music.music.battle.ultra_necrozma": {
+    "sounds": [
+      {
+        "name": "generations_music:music/battle/ultra_necrozma",
+        "attenuation_distance": 7,
+        "volume": 0.9
+      }
+    ]
+  },
+  "generations_music.music.battle.xy_legendary": {
+    "sounds": [
+      {
+        "name": "generations_music:music/battle/xy_legendary",
+        "attenuation_distance": 7,
+        "volume": 0.9
+      }
+    ]
+  },
+  "generations_music.music.battle.zinnia": {
+    "sounds": [
+      {
+        "name": "generations_music:music/battle/zinnia",
+        "attenuation_distance": 7,
+        "volume": 0.9
+      }
+    ]
+  },
+  "generations_music.music.special.lavender_town": {
+    "sounds": [
+      {
+        "name": "generations_music:music/special/lavender_town",
+        "attenuation_distance": 7,
+        "volume": 0.9
+      }
+    ]
+  },
+  "generations_music.music.special.lugia": {
+    "sounds": [
+      {
+        "name": "generations_music:music/special/lugia",
+        "attenuation_distance": 7,
+        "volume": 0.9
+      }
+    ]
+  },
+  "generations_music.music.special.mt_pyre": {
+    "sounds": [
+      {
+        "name": "generations_music:music/special/mt_pyre",
+        "attenuation_distance": 7,
+        "volume": 0.9
+      }
+    ]
+  }
+}

@@ -24,13 +24,13 @@ loom {
         convertAccessWideners.set(true)
         extraAccessWideners.add(loom.accessWidenerPath.get().asFile.name)
 
-        mixinConfig("generations_modulename-common.mixins.json")
-        mixinConfig("generations_modulename.mixins.json")
+//        mixinConfig("generations_music-common.mixins.json")
+//        mixinConfig("generations_music.mixins.json")
     }
 
     runs.create("data") {
         data()
-        programArgs("--all", "--mod", "generationsmodulename")
+        programArgs("--all", "--mod", "generations_music")
         programArgs("--output", project(":common").file("src/main/generated/resources").absolutePath)
         programArgs("--existing", project(":common").file("src/main/resources").absolutePath)
     }
@@ -49,13 +49,13 @@ dependencies {
     modRuntimeOnly("me.djtheredstoner:DevAuth-forge-latest:${project.properties["devauth_version"]}")
 
     // Generations-Core Forge
-    modImplementation("generations.gg.generations.core:Generations-Core-Forge:${project.properties["generations-core_version"]}")
-    modRuntimeOnly("dev.architectury:architectury-forge:${project.properties["architectury_version"]}")
+//    modImplementation("generations.gg.generations.core:Generations-Core-Forge:${project.properties["generations-core_version"]}")
+    modImplementation("dev.architectury:architectury-forge:${project.properties["architectury_version"]}")
     modRuntimeOnly("earth.terrarium.botarium:botarium-forge-${minecraftVersion}:${project.properties["botarium_version"]}")
 
     //Cobblemon
     implementation("thedarkcolour:kotlinforforge:4.10.0")
-    modApi("com.cobblemon:forge:${project.properties["cobblemon_version"]}")
+//    modApi("com.cobblemon:forge:${project.properties["cobblemon_version"]}")
 }
 
 tasks {

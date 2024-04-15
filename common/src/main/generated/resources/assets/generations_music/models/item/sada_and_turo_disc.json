@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "generations_music:item/discs/sada_and_turo_disc"
+  }
+}

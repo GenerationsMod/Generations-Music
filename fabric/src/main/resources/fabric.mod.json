@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "generations_modulename",
+  "id": "generations_music",
   "version": "${version}",
   "name": "Generations Module Name",
   "description": "This is an example description! Tell everyone what your mod is about!",
@@ -16,16 +16,15 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "generations.gg.generations.modulename.generationsmodulename.fabric.GenerationsModuleNameFabric"
+      "generations.gg.generations.music.generations_music.fabric.GenerationsMusicFabric"
     ]
   },
   "mixins": [
-    "generations_modulename.mixins.json",
-    "generations_modulename-common.mixins.json"
+    "generations_music.mixins.json",
+    "generations_music-common.mixins.json"
   ],
   "depends": {
     "fabric": "*",
-    "minecraft": ">=1.20.1",
-    "generations_core": "*"
+    "minecraft": ">=1.20.1"
   }
 }
