@@ -29,6 +29,7 @@ dependencies {
     "shadowCommon"(project(":common", "transformProductionFabric")) { isTransitive = false }
 
     modRuntimeOnly("me.djtheredstoner:DevAuth-fabric:${project.properties["devauth_version"]}")
+    modImplementation(include(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))!!)
 
     // Generations-Core Fabric
 //    modImplementation("generations.gg.generations.core:Generations-Core-Fabric:${project.properties["generations-core_version"]}")

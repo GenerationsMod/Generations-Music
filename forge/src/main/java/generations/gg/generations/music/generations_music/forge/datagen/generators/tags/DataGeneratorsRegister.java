@@ -42,6 +42,7 @@ public class DataGeneratorsRegister {
         generator.addProvider(true, new ItemModelProvider(output, GenerationsMusic.MOD_ID, existingFileHelper) {
             @Override
             protected void registerModels() {
+                this.registerDisc(GenerationsMusicItems.AZALEA_TOWN_DISC.getId());
                 this.registerDisc(GenerationsMusicItems.CASCARRAFA_CITY_DISC.getId());
                 this.registerDisc(GenerationsMusicItems.CERULEAN_CITY_DISC.getId());
                 this.registerDisc(GenerationsMusicItems.ETERNA_CITY_DISC.getId());

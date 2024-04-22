@@ -1,6 +1,7 @@
 package generations.gg.generations.music.generations_music;
 
 import generations.gg.generations.music.generations_music.world.item.GenerationsMusicItems;
+import generations.gg.generations.music.generations_music.world.menu.GenerationsMusicMenus;
 import generations.gg.generations.music.generations_music.world.sound.GenerationsSounds;
 import net.minecraft.resources.ResourceLocation;
 
@@ -15,6 +16,8 @@ public class GenerationsMusic {
     public static void init() {
         GenerationsSounds.init();
         GenerationsMusicItems.init();
+        GenerationsMusicMenus.init();
+        PacketRegistry.registerServerPackets();
 //        CONFIG = ConfigLoader.loadConfig(Config.class, "name", "config");
     }
 

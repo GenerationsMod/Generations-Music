@@ -15,7 +15,7 @@ dependencies {
     modImplementation("net.fabricmc:fabric-loader:${project.properties["fabric_loader_version"]}")
     modImplementation("dev.architectury:architectury:${project.properties["architectury_version"]}")
 //    modCompileOnly("generations.gg.generations.core:Generations-Core-Common:${project.properties["generations-core_version"]}")
-
+    modImplementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     //Cobblemon
     modCompileOnly("com.cobblemon:mod:${project.properties["cobblemon_version"]}")
 }

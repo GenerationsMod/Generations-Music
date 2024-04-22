@@ -52,6 +52,9 @@ dependencies {
 //    modImplementation("generations.gg.generations.core:Generations-Core-Forge:${project.properties["generations-core_version"]}")
     modImplementation("dev.architectury:architectury-forge:${project.properties["architectury_version"]}")
     modRuntimeOnly("earth.terrarium.botarium:botarium-forge-${minecraftVersion}:${project.properties["botarium_version"]}")
+    modRuntimeOnly(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    include(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+
 
     //Cobblemon
     implementation("thedarkcolour:kotlinforforge:4.10.0")

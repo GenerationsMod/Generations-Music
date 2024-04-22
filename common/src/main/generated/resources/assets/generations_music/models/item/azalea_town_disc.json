@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "generations_music:item/discs/azalea_town_disc"
+  }
+}
