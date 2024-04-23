@@ -117,6 +117,30 @@ class GeneralLang extends LanguageProvider {
                 add(item.get().asItem().getDescriptionId() + ".desc", "GlitchxCity - " + function.apply(item, item.getId().toString().replace("_disc", "")));
             }
         });
+
+        add("itemGroup.generations_music.main", "Generations Music");
+
+        add("item.generations_music.walkman", "Walkman");
+        add("item.generations_music.boombox", "Boombox");
+        add("item.generations_music.blank_record", "Blank Record");
+        add("block.generations_music.recordmaker", "Record Maker");
+        add("block.generations_music.disc_rack", "Disc Rack");
+        add("text.generations_music.current_track", "Current Track: ");
+        add("text.generations_music.current_track.nothing", "No disc in currently selected slot");
+        add("text.generations_music.old_disc", "Old format for music discs, please place into a crafting table to update to the new format");
+        add("text.generations_music.missing_event", "Missing sound event, please add to your records.json");
+        add("text.generations_music.active_status", "Active: ");
+        add("category.generations_music.binds", "Music Expansion");
+        add("desc.generations_music.record_maker", "Makes custom records when supplied with blank records");
+        add("desc.generations_music.walkmon", "Plays records that are stored inside for you to hear");
+        add("desc.generations_music.boombox", "Acts like a portable jukebox that can hold up to 9 discs");
+        add("desc.generations_music.activekey_binds", "Shift right click to set as active so it will respond to keybinds (Check controls)");
+        add("desc.generations_music.disc_rack", "Holds up to 9 discs, shift right click with a disc holder (i.e Walkman or Boombox) to swap discs");
+        add("key.generations_music.back", "Previous Track");
+        add("key.generations_music.next", "Next Track");
+        add("key.generations_music.play", "Play Track");
+        add("key.generations_music.stop", "Stop Track");
+        add("key.generations_music.rand", "Random Track");
     }
 
     public void addItemEntries(DeferredRegister<Item> entries, BiFunction<RegistrySupplier<? extends ItemLike>, String, String> function, BiConsumer<RegistrySupplier<? extends ItemLike>, BiFunction<RegistrySupplier<? extends ItemLike>, String, String>> additionalActions) {

@@ -49,14 +49,14 @@ public abstract class Abstract9DiscItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag context) {
         tooltip.add(getDescription());
-        tooltip.add(Component.translatable("desc.musicexpansion.active_keybinds").withStyle(ChatFormatting.GRAY));
-        tooltip.add(Component.translatable("text.musicexpansion.active_status").append(WordUtils.capitalize(String.valueOf(DiscHolderHelper.isActive(stack)))).withStyle(ChatFormatting.GRAY));
+        tooltip.add(Component.translatable("desc.generations_music.active_keybinds").withStyle(ChatFormatting.GRAY));
+        tooltip.add(Component.translatable("text.generations_music.active_status").append(WordUtils.capitalize(String.valueOf(DiscHolderHelper.isActive(stack)))).withStyle(ChatFormatting.GRAY));
         if (Minecraft.getInstance().player != null) {
             ItemStack disc = DiscHolderHelper.getDiscInSlot(stack, DiscHolderHelper.getSelectedSlot(stack));
             if (!disc.isEmpty()) {
-                tooltip.add(Component.translatable("text.musicexpansion.current_track").append(DiscHelper.getDesc(disc)).withStyle(ChatFormatting.GRAY));
+                tooltip.add(Component.translatable("text.generations_music.current_track").append(DiscHelper.getDesc(disc)).withStyle(ChatFormatting.GRAY));
             } else {
-                tooltip.add(Component.translatable("text.musicexpansion.current_track.nothing").withStyle(ChatFormatting.GRAY));
+                tooltip.add(Component.translatable("text.generations_music.current_track.nothing").withStyle(ChatFormatting.GRAY));
             }
         }
         super.appendHoverText(stack, world, tooltip, context);

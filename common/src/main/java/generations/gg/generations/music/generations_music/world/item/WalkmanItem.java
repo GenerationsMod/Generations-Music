@@ -25,7 +25,7 @@ public class WalkmanItem extends Abstract9DiscItem {
 
     @Override
     public Component getDescription() {
-        return Component.translatable("desc.musicexpansion.walkman").withStyle(ChatFormatting.GRAY);
+        return Component.translatable("desc.generations_music.walkman").withStyle(ChatFormatting.GRAY);
     }
 
     @Override

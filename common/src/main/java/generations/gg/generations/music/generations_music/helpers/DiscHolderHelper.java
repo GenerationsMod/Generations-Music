@@ -18,7 +18,6 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.RecordItem;
 
-import java.util.Optional;
 import java.util.UUID;
 
 public class DiscHolderHelper {
@@ -35,7 +34,7 @@ public class DiscHolderHelper {
                 inv.setChanged();
             }
         }
-        NonNullList<ItemStack> stacks = NonNullList.withSize(9, ItemStack.EMPTY);
+        NonNullList<ItemStack> stacks = NonNullList.withSize(9 * rows, ItemStack.EMPTY);
         ContainerHelper.loadAllItems(stack.getOrCreateTag(), stacks);
         return new Generic9DiscInventory(stacks, rows);
     }
@@ -43,7 +42,7 @@ public class DiscHolderHelper {
     public static int getSelectedSlot(ItemStack stack) {
         CompoundTag tag = stack.getOrCreateTag();
         if (tag.contains("selected")) {
-            return Mth.clamp(tag.getInt("selected"), 0, 8);
+            return Mth.clamp(tag.getInt("selected"), 0, ((stack.getItem() instanceof Abstract9DiscItem disc ? disc.rows() : 1) * 9) - 1);
         } else {
             tag.putInt("selected", 0);
             stack.setTag(tag);
@@ -150,6 +149,19 @@ public class DiscHolderHelper {
         }
         return getUUID(inventory.offhand.get(0)).equals(uuid);
     }
+
+    public static ItemStack getStack(UUID uuid, Inventory inventory) {
+        for (ItemStack stack : inventory.items) {
+            if (getUUID(stack).equals(uuid)) {
+                return stack;
+            }
+        }
+        return getUUID(inventory.offhand.get(0)).equals(uuid) ? inventory.offhand.get(0) : ItemStack.EMPTY;
+    }
+
+//    public float getVolume() {
+//
+//    }
 
     public static void toggleActive(ItemStack stack) {
         CompoundTag tag = stack.getOrCreateTag();

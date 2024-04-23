@@ -198,16 +198,16 @@ public class GenerationsMusicClient {
         if (client.player != null) {
             Component desc = DiscHelper.getDesc(DiscHolderHelper.getDiscInSlot(client.player.getInventory().getItem(iSlot), slot));
             if (!desc.equals(Component.literal(""))) {
-                client.player.displayClientMessage(Component.translatable("text.musicexpansion.current_track").append(desc), false);
+                client.player.displayClientMessage(Component.translatable("text.generations_music.current_track").append(desc), false);
             } else {
-                client.player.displayClientMessage(Component.translatable("text.musicexpansion.current_track.nothing"), false);
+                client.player.displayClientMessage(Component.translatable("text.generations_music.current_track.nothing"), false);
             }
         }
     }
 
 
     public static KeyMapping registerKeybind(String name, int key) {
-        var mappping = new KeyMapping("key.musicexpansion." + name, InputConstants.Type.KEYSYM, key, "category.musicexpansion.binds");
+        var mappping = new KeyMapping("key.generations_music." + name, InputConstants.Type.KEYSYM, key, "category.generations_music.binds");
         KeyMappingRegistry.register(mappping);
         return mappping;
     }
