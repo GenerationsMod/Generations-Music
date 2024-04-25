@@ -1,6 +1,7 @@
 package generations.gg.generations.music.generations_music.helpers;
 
 import com.google.common.collect.Maps;
+import generations.gg.generations.music.generations_music.inventory.DiscData;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.sounds.SoundInstance;
 import net.minecraft.world.item.ItemStack;
@@ -22,18 +23,18 @@ public class MusicHelper {
         playingTracks.remove(uuid);
     }
 
-    public static void stopTrack(ItemStack stack) {
-       stopTrack(DiscHolderHelper.getUUID(stack));
+    public static void stopTrack(DiscData stack) {
+       stopTrack(stack.getId());
     }
     
-    public static void playTrack(ItemStack stack, SoundInstance instance) {
+    public static void playTrack(DiscData stack, SoundInstance instance) {
         if (mc.player != null) {
-            if (!mc.getSoundManager().isActive(playingTracks.get(DiscHolderHelper.getUUID(stack)))) {
-                ItemStack disc = DiscHolderHelper.getDiscInSlot(stack, DiscHolderHelper.getSelectedSlot(stack));
+            if (!mc.getSoundManager().isActive(playingTracks.get(stack.getId()))) {
+                ItemStack disc = DiscHolderHelper.getDiscInSlot(stack, stack.getSelected());
                 if (!disc.isEmpty()) {
                     mc.gui.setNowPlaying(DiscHelper.getDesc(disc));
                     mc.getSoundManager().play(instance);
-                    playingTracks.put(DiscHolderHelper.getUUID(stack), instance);
+                    playingTracks.put(stack.getId(), instance);
                 }
             }
         }

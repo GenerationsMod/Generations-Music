@@ -10,12 +10,11 @@ import net.minecraft.world.entity.player.Player;
 
 import java.util.UUID;
 
-public class WalkmanMovingSound extends AbstractTickableSoundInstance implements ControllableVolume {
+public class WalkmanMovingSound extends AbstractTickableSoundInstance {
 
     private final SoundEvent soundEvent;
     private final Player player;
     private final UUID discUUID;
-    private float backupVolume = volume;
 
     public WalkmanMovingSound(SoundEvent soundEvent, UUID discUUID) {
         super(soundEvent, SoundSource.RECORDS, RandomSource.create());
@@ -27,11 +26,8 @@ public class WalkmanMovingSound extends AbstractTickableSoundInstance implements
     }
 
     @Override
-    public void tick() { // https://stackoverflow.com/questions/57277755/music-discs-have-do-not-get-quieter-by-distance-in-my-minecraft-1-14-4-mod
+    public void tick() {
         if (!DiscHolderHelper.containsUUID(discUUID, player.getInventory())) {
-            if (volume > 0.0F) {
-                backupVolume = volume;
-            }
             volume = 0.0F;
             return;
         }
@@ -41,13 +37,7 @@ public class WalkmanMovingSound extends AbstractTickableSoundInstance implements
             this.x = (float) this.player.getX();
             this.y = (float) this.player.getY();
             this.z = (float) this.player.getZ();
-            this.volume = backupVolume;
+            this.volume = DiscHolderHelper.getStack(discUUID, player.getInventory()).getVolume();
         }
-    }
-
-    @Override
-    public void setVolume(float vol) {
-        volume = vol;
-        backupVolume = vol;
     }
 }

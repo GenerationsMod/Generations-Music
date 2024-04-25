@@ -5,6 +5,7 @@ import dev.architectury.registry.menu.MenuRegistry;
 import generations.gg.generations.music.generations_music.description.WalkmanDescription;
 import generations.gg.generations.music.generations_music.helpers.DiscHelper;
 import generations.gg.generations.music.generations_music.helpers.DiscHolderHelper;
+import generations.gg.generations.music.generations_music.inventory.DiscDataProvider;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
@@ -52,7 +53,7 @@ public abstract class Abstract9DiscItem extends Item {
         tooltip.add(Component.translatable("desc.generations_music.active_keybinds").withStyle(ChatFormatting.GRAY));
         tooltip.add(Component.translatable("text.generations_music.active_status").append(WordUtils.capitalize(String.valueOf(DiscHolderHelper.isActive(stack)))).withStyle(ChatFormatting.GRAY));
         if (Minecraft.getInstance().player != null) {
-            ItemStack disc = DiscHolderHelper.getDiscInSlot(stack, DiscHolderHelper.getSelectedSlot(stack));
+            ItemStack disc = DiscHolderHelper.getDiscInSlot(DiscHolderHelper.getData(stack), DiscHolderHelper.getSelectedSlot(stack));
             if (!disc.isEmpty()) {
                 tooltip.add(Component.translatable("text.generations_music.current_track").append(DiscHelper.getDesc(disc)).withStyle(ChatFormatting.GRAY));
             } else {
@@ -64,17 +65,8 @@ public abstract class Abstract9DiscItem extends Item {
 
     public abstract Component getDescription();
 
-    @Environment(EnvType.CLIENT)
-    public abstract void playSelectedDisc(ItemStack stack);
-
-    @Environment(EnvType.CLIENT)
-    public abstract void stopSelectedDisc(ItemStack stack);
-
-    public abstract void setVolume(ItemStack stack, float volume);
-
     @Override
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
-        DiscHolderHelper.setupInitialTags(player.getItemInHand(hand), rows);
         player.getInventory().setChanged();
         if (!world.isClientSide()) {
 
@@ -109,7 +101,7 @@ public abstract class Abstract9DiscItem extends Item {
     @Override
     public void onCraftedBy(ItemStack stack, Level world, Player player) {
         super.onCraftedBy(stack, world, player);
-        DiscHolderHelper.setupInitialTags(stack, rows);
+        ((DiscDataProvider) (Object) stack).getDiscData();
     }
 
     public CompoundTag toTag(CompoundTag tag, NonNullList<ItemStack> stacks) {

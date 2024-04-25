@@ -145,7 +145,7 @@ public class GenerationsMusicClient {
             int iSlot = DiscHolderHelper.getActiveDiscHolderSlot(client.player.getInventory());
             if (iSlot > -1) {
                 ItemStack stack = client.player.getInventory().getItem(iSlot);
-                ((Abstract9DiscItem) stack.getItem()).playSelectedDisc(stack);
+                DiscHolderHelper.getData(stack()).playSelectedDisc();
             }
         }
     }
@@ -155,7 +155,7 @@ public class GenerationsMusicClient {
             int iSlot = DiscHolderHelper.getActiveDiscHolderSlot(client.player.getInventory());
             if (iSlot > -1) {
                 ItemStack stack = client.player.getInventory().getItem(iSlot);
-                ((Abstract9DiscItem) stack.getItem()).stopSelectedDisc(stack);
+                DiscHolderHelper.getData(stack()).stopSelectedDisc(stack);
             }
         }
     }
@@ -166,7 +166,7 @@ public class GenerationsMusicClient {
             int iSlot = DiscHolderHelper.getActiveDiscHolderSlot(client.player.getInventory());
             if (iSlot > -1) {
                 int slot = client.player.getRandom().nextInt(9);
-                DiscHolderHelper.setSelectedSlot(slot, iSlot);
+                DiscHolderHelper.setRandomSelectedSlot(slot);
                 sendCurrentDiscMessage(client, iSlot, slot);
             }
         }
@@ -196,7 +196,7 @@ public class GenerationsMusicClient {
 
     private static void sendCurrentDiscMessage(Minecraft client, int iSlot, int slot) {
         if (client.player != null) {
-            Component desc = DiscHelper.getDesc(DiscHolderHelper.getDiscInSlot(client.player.getInventory().getItem(iSlot), slot));
+            Component desc = DiscHelper.getDesc(DiscHolderHelper.getDiscInSlot(DiscHolderHelper.getData(client.player.getInventory().getItem(iSlot)), slot));
             if (!desc.equals(Component.literal(""))) {
                 client.player.displayClientMessage(Component.translatable("text.generations_music.current_track").append(desc), false);
             } else {

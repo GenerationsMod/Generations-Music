@@ -4,7 +4,8 @@ package generations.gg.generations.music.generations_music.helpers;
 import dev.architectury.networking.NetworkManager;
 import generations.gg.generations.music.generations_music.GenerationsMusic;
 import generations.gg.generations.music.generations_music.PacketRegistry;
-import generations.gg.generations.music.generations_music.inventory.Generic9DiscInventory;
+import generations.gg.generations.music.generations_music.inventory.DiscData;
+import generations.gg.generations.music.generations_music.inventory.DiscDataProvider;
 import generations.gg.generations.music.generations_music.world.item.Abstract9DiscItem;
 import io.netty.buffer.Unpooled;
 import net.minecraft.core.NonNullList;
@@ -14,10 +15,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
 import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.ContainerListener;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.RecordItem;
 
+import java.util.List;
 import java.util.UUID;
 
 public class DiscHolderHelper {
@@ -25,29 +28,106 @@ public class DiscHolderHelper {
     public static final SoundEvent MISSING_EVENT = SoundEvent.createVariableRangeEvent(new ResourceLocation(GenerationsMusic.MOD_ID, "missing"));
     private static final UUID EMPTY_UUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
 
-    public static Generic9DiscInventory getInventory(ItemStack stack, Inventory inv) {
-        var rows = stack.getItem() instanceof Abstract9DiscItem disc ? disc.rows() : 1;
-        if (!stack.getOrCreateTag().contains("Items")) {
-            
+    public static final DiscData EMPTY_DATA = new DiscData() {
+        @Override
+        public int getContainerSize() {
+            return 0;
+        }
+
+        @Override
+        public void clear() {
+
+        }
+
+        @Override
+        public boolean isEmpty() {
+            return true;
+        }
+
+        @Override
+        public void set(int slot, ItemStack stack) {
+
+        }
+
+        @Override
+        public ItemStack get(int slot) {
+            return ItemStack.EMPTY;
+        }
+
+        @Override
+        public ItemStack remove(int slot) {
+            return ItemStack.EMPTY;
+        }
+
+        @Override
+        public List<ContainerListener> getListeners() {
+            return null;
+        }
+
+        @Override
+        public void setStacks(NonNullList<ItemStack> stacks) {
+
+        }
+
+        @Override
+        public void setVolume(float vol) {
+
+        }
+
+        @Override
+        public float getVolume() {
+            return 1.0f;
+        }
+
+        @Override
+        public boolean isActive() {
+            return false;
+        }
+
+        @Override
+        public void setActive(boolean active) {
+
+        }
+
+        @Override
+        public int getSelected() {
+            return 0;
+        }
+
+        @Override
+        public void setSelected(int selected) {
+
+        }
+
+        @Override
+        public UUID getId() {
+            return EMPTY_UUID;
+        }
+
+        @Override
+        public void setId(UUID id) {
+
+        }
+
+        @Override
+        public void stopSelectedDisc() {
+
+        }
+    };
+
+    public static DiscData getInventory(ItemStack stack, Inventory inv) {
+
+
+        if (!stack.getOrCreateTag().contains("discData")) {
             if (!inv.player.level().isClientSide) { // Is this ever called?
-                setupInitialTags(stack, rows);
                 inv.setChanged();
             }
         }
-        NonNullList<ItemStack> stacks = NonNullList.withSize(9 * rows, ItemStack.EMPTY);
-        ContainerHelper.loadAllItems(stack.getOrCreateTag(), stacks);
-        return new Generic9DiscInventory(stacks, rows);
+
     }
 
     public static int getSelectedSlot(ItemStack stack) {
-        CompoundTag tag = stack.getOrCreateTag();
-        if (tag.contains("selected")) {
-            return Mth.clamp(tag.getInt("selected"), 0, ((stack.getItem() instanceof Abstract9DiscItem disc ? disc.rows() : 1) * 9) - 1);
-        } else {
-            tag.putInt("selected", 0);
-            stack.setTag(tag);
-            return 0;
-        }
+        return getData(stack).getSelected();
     }
 
     public static void setSelectedSlot(int slot, int invSlot) {
@@ -82,7 +162,7 @@ public class DiscHolderHelper {
      */
     public static boolean discHolderContainsSound(SoundEvent event, Inventory inv, UUID uuid) {
         ItemStack stack = inv.getItem(getSlotFromUUID(inv, uuid));
-        Generic9DiscInventory discInv = getInventory(stack, inv);
+        DiscData discInv = getInventory(stack, inv);
         for (int i = 0; i < discInv.getContainerSize(); i++) {
             ItemStack disc = discInv.getItem(i);
             if (disc.getItem() instanceof RecordItem record) {
@@ -103,42 +183,16 @@ public class DiscHolderHelper {
         return -1;
     }
 
-    public static ItemStack getDiscInSlot(ItemStack stack, int slot) {
+    public static ItemStack getDiscInSlot(DiscData stack, int slot) {
         ItemStack discStack = ItemStack.EMPTY;
-        if (MusicHelper.mc.player != null && stack.getTag() != null && stack.getTag().contains("Items")) {
-            discStack = getInventory(stack, MusicHelper.mc.player.getInventory()).getItem(slot);
+        if (MusicHelper.mc.player != null) {
+            discStack = stack.get(slot);
         }
         return discStack;
     }
 
     public static UUID getUUID(ItemStack stack) {
-        UUID uuid = EMPTY_UUID;
-        CompoundTag tag = stack.getOrCreateTag();
-        if (tag.contains("uuid")) {
-            uuid = UUID.fromString(tag.getString("uuid"));
-        }
-        return uuid;
-    }
-
-    public static void setupInitialTags(ItemStack stack, int rows) {
-        CompoundTag tag = stack.getOrCreateTag();
-        if (!tag.contains("uuid")) {
-            tag.putString("uuid", UUID.randomUUID().toString());
-        }
-        if (!tag.contains("selected")) {
-            tag.putInt("selected", 0);
-        }
-        if (!tag.contains("active")) {
-            tag.putBoolean("active", false);
-        }
-        if (!tag.contains("Items")) {
-            CompoundTag invTag = ContainerHelper.saveAllItems(tag, new Generic9DiscInventory(rows).getStacks());
-            tag.put("Items", invTag.getList("Items", 10));
-        }
-        if (!tag.contains("volume")) {
-            tag.putFloat("volume", 100.0F);
-        }
-        stack.setTag(tag);
+        return getData(stack).getId();
     }
 
     public static boolean containsUUID(UUID uuid, Inventory inventory) {
@@ -150,35 +204,36 @@ public class DiscHolderHelper {
         return getUUID(inventory.offhand.get(0)).equals(uuid);
     }
 
-    public static ItemStack getStack(UUID uuid, Inventory inventory) {
-        for (ItemStack stack : inventory.items) {
-            if (getUUID(stack).equals(uuid)) {
-                return stack;
+    public static DiscData getStack(UUID uuid, Inventory inventory) {
+        for (var stack : inventory.items) {
+            var data = ((DiscDataProvider) (Object) stack).getDiscData();
+            if (data.getId().equals(uuid)) {
+                return data;
             }
         }
-        return getUUID(inventory.offhand.get(0)).equals(uuid) ? inventory.offhand.get(0) : ItemStack.EMPTY;
+        return ((DiscDataProvider) (Object) (getUUID(inventory.offhand.get(0)).equals(uuid) ? inventory.offhand.get(0) : ItemStack.EMPTY)).getDiscData();
     }
 
-//    public float getVolume() {
-//
-//    }
-
     public static void toggleActive(ItemStack stack) {
-        CompoundTag tag = stack.getOrCreateTag();
-        tag.putBoolean("active", !tag.getBoolean("active"));
-        stack.setTag(tag);
+        getData(stack).toggleActive();
     }
 
     public static boolean isActive(ItemStack stack) {
-        boolean active = false;
-        CompoundTag tag = stack.getOrCreateTag();
-        if (tag.contains("active")) {
-            active = tag.getBoolean("active");
-        }
-        return active;
+        return getData(stack).isActive();
     }
 
     public static float getVolume(ItemStack stack) {
-        return stack.getOrCreateTag().getFloat("volume");
+        return getData(stack).getVolume();
+    }
+
+    public static void setRandomSelectedSlot(int slot) {
+    }
+
+    public static DiscData getData(ItemStack stack) {
+        return ((DiscDataProvider) (Object) stack).getDiscData();
+    }
+
+    public static DiscData getData(Inventory inventory, int slot) {
+        return ((DiscDataProvider) (Object) inventory.getItem(slot)).getDiscData();
     }
 }
